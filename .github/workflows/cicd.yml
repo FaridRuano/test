@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - main
+
+name: action
+
+jobs:
+  hello-world:
+    name: Un job para saludar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step Hola Mundo
+        id: hello
+        uses: KelvinAlvear19/hello-world-docker-action@v1
+        with:
+          who-to-greet: "hola inge"
+          
+      - name: Usar el output 
+        run: echo "la fecha fue ${{ steps.hello.outputs.time }}"
